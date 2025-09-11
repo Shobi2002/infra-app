@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: app-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-demo
+  template:
+    metadata:
+      labels:
+        app: app-demo
+    spec:
+      containers:
+      - name: app-container
+        image: shobanavijayan/app:latest   # <-- Update later by pipeline
+        ports:
+        - containerPort: 80
+
